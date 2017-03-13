@@ -1,21 +1,25 @@
 # Huddle
-![alt text](https://github.com/naelkhann/Huddle/raw/master/public/huddle-logo.png "Huddle")
+![alt text]("Events")
 
-[Heroku Link](https://huddle-application.herokuapp.com/)
+[MeetUp](https://meetup.com/)
 
-[Trello Link](https://trello.com/b/VXwYw2DP/huddle)
+<!-- [Heroku Link](https://huddle-application.herokuapp.com/) -->
+
+<!-- [Trello Link](https://trello.com/b/VXwYw2DP/huddle) -->
 
 ## Minimum Viable Product
-Huddle is a web-application inspired by Meetup. Huddle is a platform that promotes a community of users to plan, host, and attend events catered to their personal interests. Whether professional, informal, or just for fun, we believe that people should have a means to get to know each other if they are interested in similar things. Find your huddle and share your love of something with others who feel the same way.
+Events is a web-application inspired by Meetup. Events is a platform that promotes a community of users to plan, host, and attend events catered to their personal interests. Whether professional, informal, or just for fun, we believe that people should have a means to get to know each other if they are interested in similar things. Find your event and share your love of something with others who feel the same way.
 
-Huddle is built using a Ruby on Rails backend with React/Redux on the frontend. By the end of week 9 at AppAcademy, Huddle will satisfy the following features with a pleasant user experience (made with love for CSS styling and bug-free navigation) for all visitors to the platform:
+Events is built using a Ruby on Rails backend with React/Redux on the frontend. By the end of week 9 at AppAcademy, Events will satisfy the following features:
 
 - [ ] Hosting on Heroku
 - [ ] New user account creation, existing user login, guest/demo login
-- [ ] Categories (types/"genres" of Groups, fixed)
 - [ ] Groups (CRUD)
-- [ ] Huddles (events for a Group) (CRUD)
+- [ ] Events (events for a Group) (CRUD)
+- [ ] Upcoming events
 - [ ] Search by Categories or Group names
+- [ ] Search by location and group info
+- [ ] Recognize user location and offer some nearest events
 
 ## Design Docs
 * [View Wireframes](https://github.com/naelkhann/Huddle/tree/master/docs/wireframes)

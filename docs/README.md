@@ -22,7 +22,7 @@ Events is built using a Ruby on Rails backend with React/Redux on the frontend. 
 - [ ] Recognize user location and offer some nearest events
 
 ## Design Docs
-* [View Wireframes](https://github.com/naelkhann/Huddle/tree/master/docs/wireframes)
+* [View Wireframes](https://github.com/Albert2522/MeetUp_full_stack/tree/master/docs/wireframes)
 * [React Components](https://github.com/naelkhann/Huddle/blob/master/docs/component-hierarchy.md)
 * [API Endpoints](https://github.com/naelkhann/Huddle/blob/master/docs/api-endpoints.md)
 * [Database Schema](https://github.com/naelkhann/Huddle/blob/master/docs/schema.md)

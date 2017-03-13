@@ -23,10 +23,10 @@ Events is built using a Ruby on Rails backend with React/Redux on the frontend. 
 
 ## Design Docs
 * [View Wireframes](https://github.com/Albert2522/MeetUp_full_stack/tree/master/docs/wireframes)
-* [React Components](https://github.com/Albert2522/MeetUp_full_stack/master/docs/component-hierarchy.md)
-* [API Endpoints](https://github.com/Albert2522/MeetUp_full_stack/master/docs/api-endpoints.md)
-* [Database Schema](https://github.com/Albert2522/MeetUp_full_stack/master/docs/schema.md)
-* [Sample State](https://github.com/Albert2522/MeetUp_full_stack/master/docs/sample-state.md)
+* [React Components](https://github.com/Albert2522/MeetUp_full_stack/blob/master/docs/component-hierarchy.md)
+* [API Endpoints](https://github.com/Albert2522/MeetUp_full_stack/blob/master/docs/api-endpoints.md)
+* [Database Schema](https://github.com/Albert2522/MeetUp_full_stack/blob/master/docs/schema.md)
+* [Sample State](https://github.com/Albert2522/MeetUp_full_stack/blob/master/docs/sample-state.md)
 
 ##Implementation Timeline
 ###Phase 1: Backend setup, authentication (2 Days)

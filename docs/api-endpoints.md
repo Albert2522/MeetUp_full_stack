@@ -12,7 +12,7 @@
 
 - `POST /api/users`
 - `PATCH /api/users`
-- `GET /api/user/:userId/`
+- `GET /api/user/:id/`
 
 ### Session
 
@@ -36,7 +36,6 @@
 
 - `GET /api/events`
 - `POST /api/events`
-- `GET /api/groups/:groupId/events`
-- `GET /api/groups/:groupId/events/:id`
+- `GET /api/events/:id`
 - `DELETE /api/events`
 - `PATCH /api/events/:id`

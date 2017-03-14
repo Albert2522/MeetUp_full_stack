@@ -14,6 +14,11 @@
   }
   groups: {
     1: {
+      name: "first group",
+      description: "description"
+    }
+  }
+  currentGroup: {
       name: "JavaScripters",
       description: "Group description here",
       members: ["user1", "user2"],
@@ -27,7 +32,6 @@
                   group_id: "1"
                 }
               }
-      }
       photos: {
                 1: {
                   title: "Photo1",
@@ -35,7 +39,7 @@
                 }
       }
   },
-  events: {
+  events_by_location: {
     1: {
       title: "Learn Node JS",
       date: "date/time",

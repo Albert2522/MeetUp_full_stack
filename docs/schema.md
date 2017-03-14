@@ -23,8 +23,8 @@ column name | data type | details
 id          | integer   | not null, primary key
 name        | string    | not null
 description | text      | not null
-author_id   | integer   | not null
-category_id | integer   | not null
+author_id   | integer   | not null foreign key (references user), only has one
+category_id | integer   | not null foreign key (references category), only has one
 
 ## events
 column name | data type | details
@@ -32,26 +32,27 @@ column name | data type | details
 id          | integer   | not null, primary key
 title       | integer   | not null
 group_id    | integer   | not null, foreign key (references group), only has one
-author_id   | integer   | not null
+author_id   | integer   | not null  foreign key (references user), only has one
 description | text      | not null
 date        | datetime  | not null
 
-##photos
+##images
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-event_id    | integer   | not null
+url         | string    |
+event_id    | integer   | not null foreign key (references events)
 
 
-## user_groups
+## memberships
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references user)
-group_id    | integer   | not null, foreign key (references group)
+group_id    | integer   | not null, foreign key (references group) // unique constraint on user - group pair
 
-## user_events
+## attendances
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

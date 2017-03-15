@@ -6,6 +6,30 @@
   margin-right: 20px;
 }
 
+#create-event {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  color: red;
+  background-color: white;
+}
+
+#invite {
+  position: absolute;
+  left: 150px;
+  top: 10px;
+  color: red;
+  background-color: white;
+}
+
+#searchBar {
+  position: absolute;
+  left: 140px;
+  top: 12px;
+  color: red;
+  border-radius:  1px solid $gray-border;
+}
+
 .navbar-container {
   border-bottom: 1px solid $gray-border;
   background-color: white;
@@ -22,6 +46,10 @@
       .navbar-logo {
         height: 50px;
         width: auto;
+        position: fixed;
+        top: 3.5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         border-radius: 6px;
       }
     }

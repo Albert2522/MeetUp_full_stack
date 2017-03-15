@@ -1,0 +1,67 @@
+@import '../variables';
+@import '../button';
+
+.group-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  .group-form-cover {
+    height: 225px;
+    background-image: url("https://s3.amazonaws.com/huddle-application-dev/static_images/form_cover.jpeg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1, h2 {
+      display: block;
+      padding: 10px 0;
+      font-weight: normal;
+      color: white;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.57);
+      text-align: center;
+    }
+    a {
+      @include meetup-button;
+      @include red-button;
+    }
+  }
+  .group-form {
+    margin: 0 auto;
+    font-family: $meetup-font;
+    padding: 30px;
+    .group-form-labels {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .group-form-checkbox-label {
+      font-weight: normal;
+      font-size: 18px;
+    }
+    input[type="checkbox"] {
+      margin-left: 5px;
+
+    }
+    input[type="text"] {
+      width: 450px;
+      border-radius: 2px;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      font-size: 16px;
+      font-family: sans-serif;
+      font-weight: normal;
+    }
+    textarea {
+      width: 500px;
+      height: 275px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      font-size: 16px;
+      font-family: sans-serif;
+      font-weight: normal;
+    }
+    .group-form-submit-btn {
+      @include meetup-button;
+      @include red-button;
+    }
+  }
+}

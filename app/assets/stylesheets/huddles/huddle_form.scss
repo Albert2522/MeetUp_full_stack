@@ -1,0 +1,14 @@
+@import '../variables';
+@import '../button';
+
+.huddle-form-main-container {
+  display: flex;
+  margin-left: 10px;
+  .huddle-form-container {
+    width: 575px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: content-box;
+    padding: 10px;
+  }
+}

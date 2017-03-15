@@ -3,21 +3,18 @@
   session: {
     currentUser: {
       id:1,
-      username: 'user'
+      email: 'user'
     },
     errors: {
       errors: []
     }
   },
-  categories: {
-    list: ["sports", "science", "gaming", "movements", "dance", "more will go here"]
-  }
   groups: {
     1: {
       name: "first group",
       description: "description"
     }
-  }
+  },
   currentGroup: {
       name: "JavaScripters",
       description: "Group description here",

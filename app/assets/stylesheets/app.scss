@@ -1,0 +1,72 @@
+@import 'variables';
+@import 'button';
+
+#signup {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar-container {
+  border-bottom: 1px solid $gray-border;
+  background-color: white;
+  width: 100%;
+  padding: 5px 0;
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .navbar-logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .navbar-logo {
+        height: 50px;
+        width: auto;
+        border-radius: 6px;
+      }
+    }
+    .navbar-buttons-container {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      .navbar-profile-img {
+        height: 25px;
+        margin: 0 0 0 10px;
+        border-radius: 50%;
+      }
+      .navbar-button {
+        @include meetup-button;
+      }
+    }
+  }
+}
+
+#logout {
+  @include meetup-button;
+  @include red-button;
+  color: white;
+}
+.red-button {
+  @include red-button;
+
+}
+
+.children-container {
+  min-height: 83vh;
+}
+
+.footer {
+  margin-top: 20px;
+  background-color: black;
+  color: white;
+  .list {
+    display: flex;
+    padding: 20px 100px;
+    border-top: 1px solid white;
+    li {
+      padding: 10px;
+    }
+  }
+}

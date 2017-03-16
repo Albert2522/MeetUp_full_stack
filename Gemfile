@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'annotate'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'normalize-rails'
 gem 'figaro'

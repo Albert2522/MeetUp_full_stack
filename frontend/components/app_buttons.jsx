@@ -5,9 +5,7 @@ import { logout } from '../actions/session_actions';
 import { browserHistory } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
-
-  console.log(state);
-  console.log(ownProps);
+  
   return ({currentUser: state.session.currentUser,
   state: state});
 };
@@ -69,7 +67,6 @@ class AppButtons extends React.Component {
   }
 
   searchForm() {
-    console.log(this.state.search);
     return (
       <div id="searchBar">
         <form onSubmit={this._submitSearchForm}>

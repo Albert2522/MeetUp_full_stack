@@ -4,7 +4,13 @@ import { Link, withRouter } from 'react-router';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { email: "", password: "" };
+		if (this.props.formType === "login") {
+			this.state = { email: "", password: "" };
+		}
+		else {
+			this.state = { email: "", password: "", password_confirm: "" };
+		}
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -43,7 +49,17 @@ class SessionForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const user = this.state;
-		this.props.processForm({user});
+		if (this.props.formType === "signup") {
+			if (user.password === user.password_confirm) {
+				this.props.processForm({user});
+			} else {
+				let a = "Password and Confirm Password don't match";
+				this.props.errors.push(a);
+				this.forceUpdate();
+			}
+		} else {
+			this.props.processForm({user});
+		}
 	}
 
 	navLink() {
@@ -55,10 +71,15 @@ class SessionForm extends React.Component {
 	}
 
 	renderErrors() {
+		if (this.props.formType === "login") {
+			let a = "Password and Confirm Password don't match"
+			let index = this.props.errors.indexOf(a);
+			delete this.props.errors[index];
+		}
 		return(
 			<ul>
 				{this.props.errors.map((error, i) => (
-					<li key={`error-${i}`}>
+					<li key={`error-${i}`} style={{color: "#E9573F"}}>
 						{error}
 					</li>
 				))}
@@ -66,7 +87,23 @@ class SessionForm extends React.Component {
 		);
 	}
 
+	renderPassword() {
+		if (this.props.formType !== "login") {
+				return (
+				<div>
+					<label className="session-form-label"> Confirm Password:<br />
+						<input className="biginput span-100" type="password"
+							value={this.state.password_confirm}
+							onChange={this.update("password_confirm")}
+							className="login-input" />
+					</label>
+				</div>
+			);
+		}
+	}
+
 	render() {
+		let password = this.props.formType === "login" ? "Password:" : "New Password"
 		return (
 			<div className="main-container-session">
 				<div className="session-form-container">
@@ -83,12 +120,14 @@ class SessionForm extends React.Component {
 									className="login-input" />
 							</label>
 							<br/>
-							<label className="session-form-label"> Password:<br />
+							<label className="session-form-label"> {password}<br />
 								<input className="biginput span-100" type="password"
 									value={this.state.password}
 									onChange={this.update("password")}
 									className="login-input" />
 							</label>
+							<br/>
+							{this.renderPassword()}
 							<br/>
 							<input
 								 type="submit" value="Submit" />

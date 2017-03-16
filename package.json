@@ -4,8 +4,25 @@
   "description": "== README",
   "main": "index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "test": "test"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "heroku-postbuild": "webpack --config webpack.config.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Albert2522/MeetUp_full_stack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Albert2522/MeetUp_full_stack/issues"
+  },
+  "homepage": "https://github.com/Albert2522/MeetUp_full_stack#readme",
   "dependencies": {
     "babel-core": "^6.2.0",
     "babel-loader": "^6.2.0",
@@ -23,20 +40,5 @@
   "engines": {
     "node": "6.2.1",
     "npm": "3.9.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "heroku-postbuild": "webpack --config webpack.config.prod.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Albert2522/MeetUp_full_stack.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Albert2522/MeetUp_full_stack/issues"
-  },
-  "homepage": "https://github.com/Albert2522/MeetUp_full_stack#readme"
+  }
 }

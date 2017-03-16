@@ -1,8 +1,8 @@
 {
   "name": "MeetUp_full_stack",
   "version": "1.0.0",
-  "description": "[Heroku link][heroku]https://greatevents.herokuapp.com/",
-  "main": "webpack.config.js",
+  "description": "== README",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -26,6 +26,8 @@
   },
   "devDependencies": {},
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node_modules/.bin/webpack --watch",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "repository": {

@@ -9,7 +9,8 @@ class CreateEventForm extends React.Component {
       description: "",
       data: "2017-02-24 14:21:10.308703",
       author_id: this.props.currentUser.id,
-      location: "SF"
+      location: "SF",
+      image_url: "https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/event/dt000ddfxff646a/sgb5be2d848b/457187370.jpeg"
     };
     this._handleSubmit = this._handleSubmit.bind(this);
   }

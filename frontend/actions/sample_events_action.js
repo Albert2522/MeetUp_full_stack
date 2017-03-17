@@ -1,7 +1,7 @@
 import * as APIUtil from '../util/events_api_util';
 
 export const RECEIVE_SAMPLE_EVENTS = "RECEIVE_SAMPLE_EVENTS";
-export const RECEIVE_EVENT = "RECEIVE_EVENTS";
+export const RECEIVE_EVENT = "RECEIVE_EVENT";
 
 export const receiveSampleEvents = events => ({
   type: RECEIVE_SAMPLE_EVENTS,

@@ -1,9 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
-import SampleEvents from '../SampleEvents/sample_event.jsx';
+import SampleEvents from '../SampleEvents/sample_event_container';
 import UpcomingEvents from '../upcoming_events/upcoming_events.jsx';
 import Categories from '../categories/categories.jsx';
 import HowAppWorks from '../how_app_works/how_app_works.jsx';
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+  currentUser: state.session.currentUser,
+}};
+
+const mapDispatchToProps = dispatch => ({
+
+});
 
 class homePageForm extends React.Component {
   constructor(props) {
@@ -34,6 +44,7 @@ class homePageForm extends React.Component {
             </video>
           </div>
         </div>
+        {this.props.children}
         <div>
           <SampleEvents />
         </div>
@@ -51,4 +62,4 @@ class homePageForm extends React.Component {
 
 }
 
-export default homePageForm;
+export default connect(mapStateToProps, mapDispatchToProps)(homePageForm);

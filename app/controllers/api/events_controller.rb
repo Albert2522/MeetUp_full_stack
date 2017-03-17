@@ -12,6 +12,10 @@ class Api::EventsController < ApplicationController
     end
   end
 
+  def index
+    @events = Event.limit(30)
+  end
+
   def destroy
     @event = Event.find(params[:id])
     @event.destroy

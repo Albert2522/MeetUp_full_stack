@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
-import { updateUser } from '../../actions/session_actions';
+import { updateUser } from '../../actions/user_editing_action';
 import { getCategories } from '../../actions/categories_actions';
 import * as Selectors from '../../reducers/selectors.js';
 import React from 'react';
@@ -8,7 +8,7 @@ import React from 'react';
 const mapStateToProps = (state, ownProps) => {
   return {
   currentUser: state.session.currentUser,
-  errors: []
+  errors: state.userEdit.errors
 }};
 
 const mapDispatchToProps = dispatch => ({
@@ -39,8 +39,10 @@ class ChangePasswordForm extends React.Component {
 		);
 	}
 
+  componentWillReceiveProps(newProps) {
+  }
+
   _handleSubmit(e) {
-    console.log("HAnde");
     e.preventDefault();
     const user = Object.assign(this.state);
     this.props.updateUser({user});

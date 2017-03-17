@@ -13,13 +13,12 @@ end
 def update
 	@user = User.find_by_id(user_params[:id])
 	unless @user.password_is?(user_params[:old_password])
-		@user.errors["Initial Password"] = "is incorrect"
-		render json: @user.errors.full_messages, status: 422
+		render json: ["Initial password is incorrect"], status: 422
 		return
 	end
 	renew_params = {email: user_params[:email], password: user_params[:password]}
 	if @user.update(renew_params)
-		render "api/users/show"
+		render json: ["Password is succesfully changed. You can continue session or refresh page and login with new password"], status: 422
 	else
 		render json: @user.errors.full_messages, status: 422
 	end

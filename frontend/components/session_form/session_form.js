@@ -108,11 +108,8 @@ class SessionForm extends React.Component {
 			this.props.errors.push("Press Demo button again please");
 			this.props.router.push('login');
 		} else {
-			console.log(this.state);
-			console.log(this.props.errors);
 			this.state = {email: "demoUser@gmail.com", password: "123456"};
 			let user = this.state;
-			console.log(this.state);
 			this.props.processForm({user});
 		}
 	}

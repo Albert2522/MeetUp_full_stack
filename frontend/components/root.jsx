@@ -11,6 +11,7 @@ import UserPage from './user_form/user_form';
 import HomeForm from './home_form/home_form';
 import CreateEventFormContainer from './create_event_form/create_event_form_container';
 import SearchForm from './search_form/search_form';
+import ChangePasswordForm from './user_form/change_password_form';
 
 
 const Root = ({ store }) => {
@@ -42,7 +43,9 @@ const Root = ({ store }) => {
           <IndexRoute component={HomeForm} />
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="/user" component={UserPage} />
+          <Route path="/user/:userId" component={UserPage}>
+            <Route path="change_password" component={ChangePasswordForm} />
+          </Route>
           <Route path="/create_event" component={CreateEventFormContainer} onEnter={_redirectIfLoggedOUT}/>
           <Route path="/search_form" component={SearchForm} onEnter={_redirectIfLoggedOUT}/>
         </Route>

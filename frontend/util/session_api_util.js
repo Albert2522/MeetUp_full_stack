@@ -16,6 +16,14 @@ export const signup = (user) => {
   });
 };
 
+export const updateUser = (user) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: '/api/user',
+    data: user
+  });
+}
+
 export const logout = () => {
   return $.ajax({
     method: 'delete',

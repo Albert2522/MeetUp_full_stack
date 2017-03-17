@@ -5,7 +5,7 @@ import { logout } from '../actions/session_actions';
 import { browserHistory } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
-  
+
   return ({currentUser: state.session.currentUser,
   state: state});
 };
@@ -82,7 +82,7 @@ class AppButtons extends React.Component {
         {this.createEventAndInvite()}
         {this.searchForm()}
         <div className="navbar-buttons-container">
-          <Link to="/user"><h4 className="session-form-label">{this.props.currentUser.email}</h4></Link>
+          <Link to={`/user/${this.props.currentUser.id}`}><h4 className="session-form-label">{this.props.currentUser.email}</h4></Link>
           <button id="logout" onClick={this.logoutFn}>Log Out</button>
         </div>
     </div>

@@ -1,15 +1,27 @@
-import {RECEIVE_SAMPLE_EVENTS, RECEIVE_EVENT} from '../actions/sample_events_action';
+import {RECEIVE_SAMPLE_EVENTS, RECEIVE_EVENT, RECEIVE_ERRORS} from '../actions/sample_events_action';
 import merge from 'lodash/merge';
 
-const sampleEventsReducer = (state = {}, action) => {
-  Object.freeze(state)
+const _nullEvent = Object.freeze({
+  events: [],
+  event: {},
+  errors: []
+});
+
+const sampleEventsReducer = (state = _nullEvent, action) => {
+  Object.freeze(state);
+  let newState;
   switch(action.type) {
     case RECEIVE_SAMPLE_EVENTS:
-      return merge({}, action.events);
+      let events = action.events;
+      return merge({}, _nullEvent, {events});
     case RECEIVE_EVENT:
-      let newState = merge({}, state);
-      newState[action.event.id] = action.event;
-      return newState;
+      newState = merge({}, state);
+      let event = action.event;
+      newState.events[event.id] = event;
+      return merge({}, newState, {event});
+    case RECEIVE_ERRORS:
+    let errors = action.errors;
+      return merge({}, state, {errors});
     default:
       return state;
   }

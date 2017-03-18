@@ -8,7 +8,7 @@ import React from 'react';
 const mapStateToProps = (state = {}, ownProps) => {
   return {
   currentUser: state.session.currentUser,
-  events: Selectors.allEvents(state.sampleEvents)
+  events: Selectors.allEvents(state.sampleEvents.events)
 }};
 
 const mapDispatchToProps = dispatch => ({

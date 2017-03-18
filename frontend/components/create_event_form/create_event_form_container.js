@@ -8,7 +8,10 @@ import * as Selectors from '../../reducers/selectors.js';
 const mapStateToProps = (state, ownProps) => {
   return {
   currentUser: state.session.currentUser,
-  categories: Selectors.arrayOfCategories(state)
+  categories: Selectors.arrayOfCategories(state),
+  event: state.sampleEvents.event,
+  errors: state.sampleEvents.errors,
+  events: Selectors.allEvents(state.sampleEvents.events)
 }};
 
 const mapDispatchToProps = dispatch => ({

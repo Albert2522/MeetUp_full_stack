@@ -19,21 +19,54 @@ class CreateEventForm extends React.Component {
 
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.event.id) {
+      this.forceUpdate();
+      setTimeout(() => this.props.router.push('/'), 3000);
+    }
+  }
+
   _handleSubmit(e) {
     e.preventDefault();
     const event = Object.assign(this.state);
-    this.props.createEvent(event).then(console.log("succesfully created"));
+    this.props.createEvent(event);
   }
 
   update(name) {
     return (e) => this.setState({ [name]: e.target.value})
   }
 
+  renderErrors() {
+    return(
+			<ul>
+				{this.props.errors.map((error, i) => (
+					<li key={`error-${i}`} style={{color: "#E9573F"}}>
+						{error}
+					</li>
+				))}
+			</ul>
+		);
+  }
+
+  createEventMessage() {
+    if (this.props.event.id) {
+      return (
+      <div style={{color: 'green'}}>
+        Event was succesfully created<br/>
+        Now you will be redirected on Home page..
+      </div>
+    );
+  } else {
+    return null;
+  }
+  }
 
   render() {
     return (
       <div className="home_page">
         <form onSubmit={this._handleSubmit}>
+          {this.createEventMessage()}
+          {this.renderErrors()}
           <label>Title
             <input type="text" value={this.state.title} onChange={this.update("title")}/>
           </label><br/><br/>

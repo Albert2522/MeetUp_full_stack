@@ -5,7 +5,13 @@ export const arrayOfCategories = ({categories}) => values(categories);
 export const arrayOfHuddles = ({group}) => values(group.huddles);
 
 export const allEvents = (events) => {
-  return values(events);
+  let arr = [ ];
+  events.forEach(key => {
+    if (typeof key != 'undefined') {
+      arr.push(key);
+    }
+  });
+  return arr;
 };
 
 export const arrayOfMembers = ({huddle}) => values(huddle.members);

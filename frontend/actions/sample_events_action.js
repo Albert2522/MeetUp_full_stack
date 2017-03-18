@@ -13,6 +13,11 @@ export const receiveEvent = event => ({
   event
 });
 
+export const receiveErrors = errors => ({
+  type: RECEIVE_ERRORS,
+  errors
+});
+
 export const fetchSampleEvents = () => dispatch => (
   APIUtil.fetchSampleEvents().then(data => dispatch(receiveSampleEvents(data)))
 );

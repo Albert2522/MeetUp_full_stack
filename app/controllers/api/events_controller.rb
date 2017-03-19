@@ -5,10 +5,10 @@ class Api::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save!
+    if @event.save
       render "api/events/show"
     else
-      render json: @event.errors, status: 422
+      render json: @event.errors.full_messages, status: 422
     end
   end
 
@@ -24,6 +24,6 @@ class Api::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :group_id,
-    :description, :data, :location, :founded_on, :author_id)
+    :description, :data, :location, :founded_on, :author_id, :image_url)
   end
 end

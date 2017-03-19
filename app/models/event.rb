@@ -17,10 +17,15 @@
 
 class Event < ActiveRecord::Base
   validates :title, :author_id, :description, :data, :location,  presence:true
+  validates :title, uniqueness: true
 
   belongs_to :group
 
-  has_many :members
+  has_many :image_relationships
+
+  has_many :images,
+    through: :image_relationships,
+    source: :image
 
   belongs_to :author
 end

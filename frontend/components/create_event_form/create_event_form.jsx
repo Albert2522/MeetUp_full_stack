@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import ImageUpploadForm from '../images/image_upload';
+import {allImages} from '../../reducers/selectors';
 
 class CreateEventForm extends React.Component {
   constructor (props) {
@@ -28,7 +30,15 @@ class CreateEventForm extends React.Component {
 
   _handleSubmit(e) {
     e.preventDefault();
+    let images;
+    if (this.imageUploader !== null) {
+      images = allImages(this.imageUploader.state.storeState.images.images);
+    }
     const event = Object.assign(this.state);
+    if ( images && images.length !== 0) {
+      event.image_url =  images[0].url;
+    }
+    //FILL IMAGE_RELATIONSHIPS TABLES WITH EVENT ID AND GROUP ID
     this.props.createEvent(event);
   }
 
@@ -39,7 +49,7 @@ class CreateEventForm extends React.Component {
   renderErrors() {
     return(
 			<ul>
-				{this.props.errors.map((error, i) => (
+				{this.props.eventErrors.map((error, i) => (
 					<li key={`error-${i}`} style={{color: "#E9573F"}}>
 						{error}
 					</li>
@@ -74,9 +84,13 @@ class CreateEventForm extends React.Component {
             <input type="text" value={this.state.description} onChange={this.update("description")}/>
           </label>
           <label>
+            <ImageUpploadForm ref={(imageUploader) => {this.imageUploader = imageUploader;}} {...this.props}/>
+          </label>
+          <label>
             <input type="submit" value="Create Event" />
           </label>
         </form>
+        {this.props.chidren}
       </div>
     );
   }

@@ -14,6 +14,13 @@ export const allEvents = (events) => {
   return arr;
 };
 
+export const allImages = images => {
+  let arr = [ ];
+  let keys = Object.keys(images);
+  keys.forEach(key => arr.push(images[key]));
+  return arr;
+}
+
 export const arrayOfMembers = ({huddle}) => values(huddle.members);
 
 export const getCategoriesNames = ({categories}) => {

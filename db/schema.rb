@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317050405) do
+ActiveRecord::Schema.define(version: 20170319014941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20170317050405) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "image_relationships", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "event_id"
+    t.integer  "image_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "image_relationships", ["event_id", "image_id"], name: "index_events_and_images", unique: true, using: :btree
+  add_index "image_relationships", ["group_id", "image_id"], name: "index_groups_and_images", unique: true, using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

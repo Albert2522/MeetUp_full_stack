@@ -15,10 +15,6 @@ class SampleEvent extends React.Component {
   }
 
   render() {
-    let background = "https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/event/dt2737ffxffc600/sg19ee043d91/446920018.jpeg"
-    let styles = {
-      backgroundImage: `url(${background})`
-    };
     if (this.props.events) {
       return (
         <div className = "SampleEvent">
@@ -26,7 +22,7 @@ class SampleEvent extends React.Component {
             {this.props.events.map( event => (
               <li className="sample-event-li" key={`${event.title} - ${event.id}`}>
               <Link to='/'>
-                <div className="event-li" style={styles}>
+                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
                   {event.title}
                 </div>
                 </Link>

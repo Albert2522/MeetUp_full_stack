@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   currentUser: state.session.currentUser,
   categories: Selectors.arrayOfCategories(state),
   event: state.sampleEvents.event,
-  errors: state.sampleEvents.errors,
+  eventErrors: state.sampleEvents.eventErrors,
   events: Selectors.allEvents(state.sampleEvents.events)
 }};
 

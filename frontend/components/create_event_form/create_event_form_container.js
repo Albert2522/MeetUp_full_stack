@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 import { receiveEvent, createEvent, fetchEvent } from '../../actions/sample_events_action';
+import { createRelationship } from '../../actions/images_actions';
 import { getCategories } from '../../actions/categories_actions';
 import CreateEventForm from './create_event_form';
 import * as Selectors from '../../reducers/selectors.js';
@@ -17,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   receiveEvent: event => dispatch(receiveEvent(event)),
   createEvent: event => dispatch(createEvent(event)),
-  fetchEvent: id => dispatch(fetchEvent(id))
+  fetchEvent: id => dispatch(fetchEvent(id)),
+  createRelationship: img_rel => dispatch(createRelationship(img_rel))
 });
 
 export default connect(

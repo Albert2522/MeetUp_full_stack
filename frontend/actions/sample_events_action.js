@@ -27,6 +27,10 @@ export const fetchEvent = (id) => dispatch => (
   APIUtil.fetchEvent(id).then(data => dispatch(receiveEvent(data)))
 );
 
+export const fetchEventByTitle = (event) => dispatch => (
+  APIUtil.fetchEvent(event).then(data => dispatch(receiveSampleEvents(data)))
+);
+
 export const createEvent = (event) => dispatch => (
   APIUtil.createEvent(event).then(data => dispatch(receiveEvent(data)), err => dispatch(receiveEventErrors(err.responseJSON)))
 );

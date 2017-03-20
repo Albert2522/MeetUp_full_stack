@@ -12,7 +12,8 @@ class CreateEventForm extends React.Component {
       data: "2017-02-24 14:21:10.308703",
       author_id: this.props.currentUser.id,
       location: "SF",
-      image_url: "https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/event/dt000ddfxff646a/sgb5be2d848b/457187370.jpeg"
+      image_url: "https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/event/dt000ddfxff646a/sgb5be2d848b/457187370.jpeg",
+      images: []
     };
     this._handleSubmit = this._handleSubmit.bind(this);
   }
@@ -23,6 +24,8 @@ class CreateEventForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.event.id) {
+      console.log(this.props);
+      console.log(newProps);
       this.forceUpdate();
       setTimeout(() => this.props.router.push('/'), 3000);
     }
@@ -37,8 +40,9 @@ class CreateEventForm extends React.Component {
     const event = Object.assign(this.state);
     if ( images && images.length !== 0) {
       event.image_url =  images[0].url;
+      images.forEach( (image) => event.images.push(image.id));
     }
-    //FILL IMAGE_RELATIONSHIPS TABLES WITH EVENT ID AND GROUP ID
+    //FILL IMAGE_RELATIONSHIPS TABLES WITH EVENT ID AND GROUP ID. PROBLEM WITH CLOUDINARY ON HEROKU
     this.props.createEvent(event);
   }
 

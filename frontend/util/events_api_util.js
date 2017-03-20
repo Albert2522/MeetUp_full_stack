@@ -12,6 +12,14 @@ export const fetchEvent = (id) => {
   });
 };
 
+export const fetchEventByTitle = (event) => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/events',
+    data: {event}
+  });
+};
+
 export const createEvent = (event) => {
   return $.ajax({
     method: 'POST',

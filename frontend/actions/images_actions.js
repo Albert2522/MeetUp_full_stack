@@ -33,3 +33,16 @@ export const createImage = (image) => dispatch => (
 export const deleteImage = (id) => dispatch => (
   APIUtil.deleteImage(id).then(image => dispatch(removeImage(image)), err => dispatch(receiveImagesErrors(err.responseJSON)))
 );
+
+
+export const createRelationship = (img_rel) => dispatch => (
+  APIUtil.createRelationship(img_rel).then(data => console.log(data), err => dispatch(receiveImagesErrors(err.responseJSON)))
+);
+
+export const updateRelationship = (img_rel) => dispatch => (
+  APIUtil.updateRelationship(img_rel).then(data = console(data), err => dispatch(receiveImagesErrors(err.responseJSON)))
+);
+
+export const deleteRelationship = (id) => dispatch => (
+  APIUtil.deleteRelationship(id).then(data => console.log(data), err => dispatch(receiveImagesErrors(err.responseJSON)))
+);

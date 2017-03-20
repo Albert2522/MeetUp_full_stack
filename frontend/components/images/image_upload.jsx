@@ -31,9 +31,6 @@ class ImageUpploadForm extends React.Component {
   deleteImage(image, e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log(e);
-    console.log(image);
-    console.log(this);
     this.props.deleteImage(image.id);
   }
 

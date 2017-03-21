@@ -69,7 +69,7 @@ class ImageUpploadForm extends React.Component {
     return (
       <div>
         <button onClick={this.upploadImage}>
-          Uppload Image
+          Upload Image
         </button>
         {this.showUpploadedImages()}
       </div>

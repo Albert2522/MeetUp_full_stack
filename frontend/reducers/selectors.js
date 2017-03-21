@@ -14,6 +14,13 @@ export const allEvents = (events) => {
   return arr;
 };
 
+export const allGroups = (groups) => {
+  let arr = [ ];
+  let keys = Object.keys(groups);
+  keys.forEach( (key) => arr.push(groups[key]))
+  return arr;
+};
+
 export const allImages = images => {
   let arr = [ ];
   let keys = Object.keys(images);

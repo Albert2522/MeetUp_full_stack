@@ -13,7 +13,7 @@ class Api::EventsController < ApplicationController
         img_rel = ImageRelationship.new({event_id: @event.id, image_id: image_id.to_i, group_id: @event.group_id})
         img_rel.save
       end
-      render ["Event created"]
+      render "api/events/show"
     else
       render json: @event.errors.full_messages, status: 422
     end
@@ -26,7 +26,7 @@ class Api::EventsController < ApplicationController
   def destroy
     @event = Event.find_by_id(params[:id])
     @event.destroy
-    render ["Object destroyed"]
+    render json: ["Object destroyed"]
   end
 
   def event_params

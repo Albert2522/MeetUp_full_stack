@@ -18,6 +18,7 @@ const sampleEventsReducer = (state = _nullEvent, action) => {
       newState = merge({}, state);
       let event = action.event;
       newState.events[event.id] = event;
+      newState.event = event;
       return merge({}, newState, {event});
     case RECEIVE_EVENT_ERRORS:
       let eventErrors = action.eventErrors;

@@ -12,6 +12,9 @@ import HomeForm from './home_form/home_form';
 import CreateEventFormContainer from './create_event_form/create_event_form_container';
 import SearchForm from './search_form/search_form';
 import ChangePasswordForm from './user_form/change_password_form';
+import CreateGroupForm from './create_group_form/create_group_form';
+import ShowGroupPage from './show_group_page/show_group_page';
+import ShowEventPage from './show_event_page/show_event_page';
 
 
 const Root = ({ store }) => {
@@ -45,7 +48,10 @@ const Root = ({ store }) => {
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/user/:userId" component={UserPage}>
             <Route path="change_password" component={ChangePasswordForm} />
+            <Route path="create_group" component={CreateGroupForm} />
           </Route>
+          <Route path="/groups/:groupId" component={ShowGroupPage} />
+          <Route path="/events/:eventId" component={ShowEventPage} />
           <Route path="/create_event" component={CreateEventFormContainer} onEnter={_redirectIfLoggedOUT}/>
           <Route path="/search_form" component={SearchForm} onEnter={_redirectIfLoggedOUT}/>
         </Route>

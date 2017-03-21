@@ -21,6 +21,26 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
+	has_many :groups_created,
+	 primary_key: :id,
+	 foreign_key: :author_id,
+	 class_name: "Group"
+
+	 has_many :events_created,
+	 primary_key: :id,
+	 foreign_key: :author_id,
+	 class_name: "Event"
+
+	 has_many :memberships
+
+	 has_many :events,
+	 	through: :memberships,
+		source: :event
+
+	has_many :groups,
+ 	 	through: :memberships,
+ 		source: :group
+
 	has_many :favorites
 	has_many :favorite_benches,
 		through: :favorites,

@@ -10,6 +10,11 @@ def create
 	end
 end
 
+def show
+	@user = User.find_by_id(params[:id])
+	render "api/users/show"
+end
+
 def update
 	@user = User.find_by_id(user_params[:id])
 	unless @user.password_is?(user_params[:old_password])

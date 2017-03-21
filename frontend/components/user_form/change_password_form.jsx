@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
-import { updateUser } from '../../actions/user_editing_action';
+import { updateUser } from '../../actions/user_editing_actions';
 import { getCategories } from '../../actions/categories_actions';
 import * as Selectors from '../../reducers/selectors.js';
 import React from 'react';
@@ -46,7 +46,6 @@ class ChangePasswordForm extends React.Component {
     e.preventDefault();
     const user = Object.assign(this.state);
     this.props.updateUser({user});
-    console.log(this);
     this.forceUpdate();
   }
 

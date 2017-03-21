@@ -9,10 +9,11 @@ export const receiveSampleEvents = events => ({
   events
 });
 
-export const receiveEvent = event => ({
+export const receiveEvent = event => {
+  return {
   type: RECEIVE_EVENT,
   event
-});
+}};
 
 export const receiveEventErrors = eventErrors => ({
   type: RECEIVE_EVENT_ERRORS,

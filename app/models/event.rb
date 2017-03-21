@@ -21,11 +21,21 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
 
+  belongs_to :author,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: "User"
+
   has_many :image_relationships
 
   has_many :images,
     through: :image_relationships,
     source: :image
 
-  belongs_to :author
+
+  has_many :memberships
+
+  has_many :members,
+    through: :memberships,
+    source: :user
 end

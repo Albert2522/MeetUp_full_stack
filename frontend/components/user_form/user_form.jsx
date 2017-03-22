@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
   currentUser: state.session.currentUser,
   user: state.userEdit.user,
-  errors: state.userEdit.errors
+  errors: state.userEdit.errors,
 }};
 
 const mapDispatchToProps = dispatch => ({
@@ -24,7 +24,7 @@ class userPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.id)
+    this.props.fetchUser(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(newProps) {

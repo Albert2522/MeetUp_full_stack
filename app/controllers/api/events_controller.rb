@@ -9,9 +9,15 @@ class Api::EventsController < ApplicationController
        author_id: event_params[:author_id], image_url: event_params[:image_url]}
     @event = Event.new(renew_params)
     if @event.save
-      event_params[:images].each do |image_id|
-        img_rel = ImageRelationship.new({event_id: @event.id, image_id: image_id.to_i, group_id: @event.group_id})
-        img_rel.save
+      if event_params[:images]
+        event_params[:images].each do |image_id|
+          img_rel = ImageRelationship.new({event_id: @event.id, image_id: image_id.to_i, group_id: @event.group_id})
+          img_rel.save
+        end
+      end
+      event_params[:category_ids].each do |categ_id|
+        cat_rel = CategoryRel.new({category_id: categ_id, event_id: @event.id})
+        cat_rel.save
       end
       render "api/events/show"
     else
@@ -31,6 +37,6 @@ class Api::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :group_id,
-    :description, :data, :location, :founded_on, :author_id, :image_url, :images => [])
+    :description, :data, :location, :founded_on, :author_id, :image_url, :images => [], :category_ids => [])
   end
 end

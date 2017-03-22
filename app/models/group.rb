@@ -29,6 +29,12 @@ class Group < ActiveRecord::Base
 
   has_many :image_relationships
 
+  has_many :category_rels
+
+  has_many :categories,
+    through: :category_rels,
+    source: :category
+
   has_many :images,
     through: :image_relationships,
     source: :image

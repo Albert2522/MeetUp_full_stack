@@ -13,6 +13,7 @@ const UserEditReducer = (state = _nullUser, action) => {
   switch(action.type) {
     case RECEIVE_FETCHED_USER:
       let user = action.user
+      newState.user = action.user
       return merge(newState, {user});
     case RECEIVE_ERRORS_USER_EDIT:
       const errors = action.errors;

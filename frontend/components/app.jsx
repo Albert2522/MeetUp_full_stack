@@ -4,9 +4,6 @@ import GreetingContainer from './greeting/greeting_container';
 import AppButtons from './app_buttons';
 import SearchComponent from './search_form/search_form';
 
-const searchForm = () => {
-  console.log("Search");
-};
 
 const App = ({ children }) => (
   <div className="app-container">
@@ -26,10 +23,8 @@ const App = ({ children }) => (
 
       <div className="footer">
         <ul className="list">
-          <li>Home</li>
-          <li>About Me</li>
-          <li>Github</li>
-          <li>LinkedIn</li>
+          <li><Link style={{color: "white"}} to={`/`}>Home</Link></li>
+          <li><a href="https://github.com/Albert2522/MeetUp_full_stack" style={{color: "white"}} target="_blank">Github</a></li>
         </ul>
       </div>
     </div>

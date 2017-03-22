@@ -14,6 +14,10 @@ class Api::GroupsController < ApplicationController
           img_rel.save
         end
       end
+      group_params[:category_ids].each do |categ_id|
+        cat_rel = CategoryRel.new({category_id: categ_id, group_id: @group.id})
+        cat_rel.save
+      end
       render "api/groups/show"
     else
       render json: @group.errors.full_messages, status: 422
@@ -32,6 +36,6 @@ class Api::GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name,
-    :description, :author_id, :image_url, :category_id, :images => [])
+    :description, :author_id, :image_url, :category_id, :images => [], :category_ids => [])
   end
 end

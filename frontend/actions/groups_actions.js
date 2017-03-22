@@ -25,6 +25,9 @@ export const removeGroup = group => ({
   group
 });
 
+export const createFakeGroup = (group) => dispatch => {
+  dispatch(receiveGroup(group));
+};
 
 export const fetchGroups = () => dispatch => (
   APIUtil.fetchGroups().then(data => dispatch(receiveGroups(data)))

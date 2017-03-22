@@ -15,6 +15,8 @@ import ChangePasswordForm from './user_form/change_password_form';
 import CreateGroupForm from './create_group_form/create_group_form';
 import ShowGroupPage from './show_group_page/show_group_page';
 import ShowEventPage from './show_event_page/show_event_page';
+import ShowCategoryPage from './categories/category_show_page';
+import SearchResultForm from './search_form/search_form';
 
 
 const Root = ({ store }) => {
@@ -50,8 +52,10 @@ const Root = ({ store }) => {
             <Route path="change_password" component={ChangePasswordForm} />
             <Route path="create_group" component={CreateGroupForm} />
           </Route>
-          <Route path="/groups/:groupId" component={ShowGroupPage} />
-          <Route path="/events/:eventId" component={ShowEventPage} />
+          <Route path="/search_result" component={SearchResultForm} />
+          <Route path="/categories/:categoryId" component={ShowCategoryPage} />
+          <Route path="/groups/:groupId" component={ShowGroupPage} onEnter={_redirectIfLoggedOUT}/>
+          <Route path="/events/:eventId" component={ShowEventPage} onEnter={_redirectIfLoggedOUT}/>
           <Route path="/create_event" component={CreateEventFormContainer} onEnter={_redirectIfLoggedOUT}/>
           <Route path="/search_form" component={SearchForm} onEnter={_redirectIfLoggedOUT}/>
         </Route>

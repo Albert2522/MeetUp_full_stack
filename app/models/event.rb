@@ -35,6 +35,12 @@ class Event < ActiveRecord::Base
 
   has_many :memberships
 
+  has_many :category_rels
+
+  has_many :categories,
+    through: :category_rels,
+    source: :category
+
   has_many :members,
     through: :memberships,
     source: :user

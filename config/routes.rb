@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :img_rel, only: [:create, :update, :destroy]
     resources :groups, only: [:create, :update, :destroy, :show]
     resources :memberships, only: [:create, :destroy]
+    resources :categories, only: [:show, :index]
+    resources :search, only: [:index]
   end
 
   root "static_pages#root"

@@ -9,12 +9,13 @@ import ImageUpploadForm from '../images/image_upload';
 import {allImages} from '../../reducers/selectors';
 import React from 'react';
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
   currentUser: state.session.currentUser,
-  categories: Selectors.arrayOfCategories(state),
+  categories: state.categoriesRed.categories,
   event: state.sampleEvents.event,
-  eventId: ownProps.params.eventId
+  eventId: ownProps.params.eventId,
 }};
 
 const mapDispatchToProps = dispatch => ({
@@ -78,6 +79,7 @@ class ShowEventPage extends React.Component {
           <div>Title - {event.title}</div>
           <div>Description - {event.description}</div>
           <div>Author - {event.author.email}</div>
+          <div>Location - {event.location}</div>
           <div>
             Members:
             <ul>
@@ -95,7 +97,7 @@ class ShowEventPage extends React.Component {
             </ul>
           </div>
           {this.membershipComponent()}
-          <Link to={`/user/${this.props.currentUser.id}`}>Back to User's profile</Link>
+          <button onClick={(e) => this.props.history.goBack()}>Back</button>
           {this.props.chidren}
         </div>
       );

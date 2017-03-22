@@ -20,6 +20,10 @@ export const receiveEventErrors = eventErrors => ({
   eventErrors
 });
 
+export const createFakeEvent = (event) => dispatch => {
+  dispatch(receiveEvent(event));
+};
+
 export const fetchSampleEvents = () => dispatch => (
   APIUtil.fetchSampleEvents().then(data => dispatch(receiveSampleEvents(data)))
 );

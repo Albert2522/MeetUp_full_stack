@@ -12,7 +12,7 @@ import React from 'react';
 const mapStateToProps = (state, ownProps) => {
   return {
   currentUser: state.session.currentUser,
-  categories: Selectors.arrayOfCategories(state),
+  categories: state.categoriesRed.categories,
   group: state.groupsRed.group,
   groupId: ownProps.params.groupId
 }};
@@ -44,12 +44,14 @@ class ShowGroupPage extends React.Component {
     e.preventDefault();
     let membership = {user_id: this.props.currentUser.id, group_id: this.props.groupId}
     this.props.createMembership(membership);
+    this.props.fetchGroup(this.props.groupId);
   }
 
   leaveGroup(e) {
     e.preventDefault();
     let membership = {user_id: this.props.currentUser.id, group_id: this.props.groupId};
     this.props.deleteMembership(membership);
+    this.props.fetchGroup(this.props.groupId);
   }
 
   membershipComponent() {
@@ -93,7 +95,7 @@ class ShowGroupPage extends React.Component {
             </ul>
           </div>
           {this.membershipComponent()}
-          <Link to={`/user/${this.props.currentUser.id}`}>Back to User's profile</Link>
+          <button onClick={(e) => this.props.history.goBack()}>Back</button>
           {this.props.chidren}
         </div>
       );

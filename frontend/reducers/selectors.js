@@ -1,7 +1,5 @@
 import { values } from 'lodash';
 
-export const arrayOfCategories = ({categories}) => values(categories);
-
 export const arrayOfHuddles = ({group}) => values(group.huddles);
 
 export const allEvents = (events) => {
@@ -16,8 +14,17 @@ export const allEvents = (events) => {
 
 export const allGroups = (groups) => {
   let arr = [ ];
-  let keys = Object.keys(groups);
-  keys.forEach( (key) => arr.push(groups[key]))
+  if (groups) {
+    let keys = Object.keys(groups);
+    keys.forEach( (key) => arr.push(groups[key]))
+  }
+  return arr;
+};
+
+export const allCategories = (categories) => {
+  let arr = [ ];
+  let keys = Object.keys(categories);
+  keys.forEach( (key) => arr.push(categories[key]))
   return arr;
 };
 

@@ -6,6 +6,7 @@ import SampleEvents from '../SampleEvents/sample_event_container';
 import UpcomingEvents from '../upcoming_events/upcoming_events.jsx';
 import HowAppWorks from '../how_app_works/how_app_works.jsx';
 import { allCategories } from '../../reducers/selectors';
+import Modal from 'react-bootstrap';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -20,6 +21,7 @@ const mapDispatchToProps = dispatch => ({
 class homePageForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {show: false};
   }
 
   componentDidMount() {
@@ -36,6 +38,14 @@ class homePageForm extends React.Component {
         <Link to="/login" className="categories-video-cover-btn">Sign Up</Link>
       );
     }
+  }
+
+  showModal() {
+   this.setState({show: true});
+  }
+
+  hideModal() {
+   this.setState({show: false});
   }
 
   render() {
@@ -59,20 +69,18 @@ class homePageForm extends React.Component {
           <div>
             <SampleEvents />
           </div>
-          <div>
-            <UpcomingEvents />
-          </div>
-          <div>
+          <div className="main-container-categories categories-container">
             {this.props.categories.map((category) => (
-              <li key={`${category.title} - ${category.id}`}>
-                <Link to={`/categories/${category.id}`}>
-                {category.title}
-                <img src={category.url} alt="Category Image"/>
+              <div className="category-container" key={`${category.title} - ${category.id}`}>
+                <Link className="categories-link" to={`/categories/${category.id}`}>
+                <img className="image" src={category.url} alt="Category Image"/>
                 </Link>
-              </li>
+                <h4 className="categories-names">
+                {category.title}
+              </h4>
+              </div>
             ))}
           </div>
-          <HowAppWorks />
         </div>
       );
     } else {

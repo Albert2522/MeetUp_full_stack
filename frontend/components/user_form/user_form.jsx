@@ -42,16 +42,17 @@ class userPage extends React.Component {
           <div>
             Joined Events:
           </div>
-          <ul>
+          <div className= "scrollmenu">
             {this.props.user.events.map((event) => (
-              <li key={`${event.title} - ${event.id}`}>
-              <Link to={`events/${event.id}`}>
-                {event.title}<br />
-              <img src={event.image_url} alt="Should be the image of the event"/>
-              </Link>
-              </li>
+              <div key={`${event.title} - ${event.id}`}>
+                <Link to={`/events/${event.id}`}>
+                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
+                  {event.title}
+                </div>
+                </Link>
+              </div>
             ))}
-          </ul>
+          </div>
           <div>
             Created Groups:
             {this.props.user.groups_created.map((group) => (
@@ -63,13 +64,18 @@ class userPage extends React.Component {
             ))}<br />
             <Link to={`/user/${this.props.currentUser.id}/create_group`}>Create Group</Link>
           </div>
-          <div> Created Events:<br />
+          <div> Created Events:
+          </div>
+          <div className="scrollmenu">
             {this.props.user.events_created.map((event) => (
-              <li key={`${event.title} - ${event.id}`}><Link to={`/events/${event.id}`}>
-                {event.title}<br />
-            <img src={event.image_url} alt="Image for group" /></Link>
-              </li>
-            ))}<br />
+              <div key={`${event.title} - ${event.id}`}>
+                <Link to={`/events/${event.id}`}>
+                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
+                  {event.title}
+                </div>
+                </Link>
+              </div>
+            ))}
           </div>
 
           { this.props.children }

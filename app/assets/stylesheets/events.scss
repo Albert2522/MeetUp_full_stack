@@ -1,3 +1,23 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#event-page-content1 {
+  position: relative;
+  top: 30px;
+  display: inline;
+  width: 960px;
+  min-height: 300px;
+  font-size: 16px;
+  line-height: 1.45;
+  padding: 0 1em;
+  padding-bottom: 1.25em;
+  padding-top: 1em;
+  font-family: "Graphik Meetup",helvetica,arial,sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga","kern";
+  color: rgba(0,0,0,.87);
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga","kern";
+}

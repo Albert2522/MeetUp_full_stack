@@ -31,7 +31,7 @@ class AppButtons extends React.Component {
     this._submitSearchForm = this._submitSearchForm.bind(this);
     this.clearForm = this.clearForm.bind(this);
     this.state = {
-      search: "Search..."
+      search: "find event..."
     };
   }
 
@@ -56,7 +56,7 @@ class AppButtons extends React.Component {
           {this.searchForm()}
           {this.createEventAndInvite()}
         <div className="navbar-buttons-container">
-          <Link to="/login" className="navbar-button">Log in</Link>
+          <Link to="/login" id="login" className="navbar-highlighted-button">Log in</Link>
           <Link to="/signup" className="navbar-button red-button" id="signup">Sign up</Link>
         </div>
       </div>
@@ -80,7 +80,7 @@ class AppButtons extends React.Component {
   createEventAndInvite () {
     return (
       <div>
-        <button id="create-event" refresh="true" onClick={this.goToCreateEvent}>Create Event</button>
+        <button id="create-event" className="navbar-buttons-container navbar-highlighted-button" refresh="true" onClick={this.goToCreateEvent}>Create Event</button>
       </div>
     );
   }
@@ -89,7 +89,7 @@ class AppButtons extends React.Component {
     return (
       <div id="searchBar">
         <form onSubmit={this._submitSearchForm}>
-          <input type="text" value={this.state.search} onChange={this.update('search')} onClick={this.clearForm}/>
+          <input className="rounded" type="text" value={this.state.search} onChange={this.update('search')} onClick={this.clearForm}/>
         </form>
       </div>
     );
@@ -97,7 +97,7 @@ class AppButtons extends React.Component {
 
   clearForm(e) {
     e.preventDefault();
-    if (this.state.search === "Search...") {
+    if (this.state.search === "find event...") {
       this.setState({search: ""});
     }
   }

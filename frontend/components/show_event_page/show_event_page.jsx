@@ -75,13 +75,23 @@ class ShowEventPage extends React.Component {
     let event = this.props.event
     if (this.props.event.id) {
       return (
-        <div className="home_page">
-          <div>Title - {event.title}</div>
-          <div>Description - {event.description}</div>
-          <div>Author - {event.author.email}</div>
-          <div>Location - {event.location}</div>
-          <div>
-            Members:
+        <div id="event-page-content1">
+          <div className="left-side-bar">
+            <h3>Images:</h3>
+            <ul>
+              {event.images.map((image) => (
+                <li key={`${image.url} - ${image.id}`}><img src={image.url} alt="Should be image of event"/></li>
+              ))}
+            </ul>
+          </div>
+          <div className="middle-bar">
+            <div>Title - {event.title}</div>
+            <div>Description - {event.description}</div>
+            <div>Author - {event.author.email}</div>
+            <div>Location - {event.location}</div>
+          </div>
+          <div className="right-side-bar">
+            <h3>Members:</h3>
             <ul>
               {event.members.map((user) => (
                 <li key={`${user.email} - ${user.id}`}>{user.email}</li>
@@ -90,11 +100,7 @@ class ShowEventPage extends React.Component {
           </div>
           <div>
             Images:
-            <ul>
-              {event.images.map((image) => (
-                <li key={`${image.url} - ${image.id}`}><img src={image.url} alt="Should be image of event"/></li>
-              ))}
-            </ul>
+
           </div>
           {this.membershipComponent()}
           <button onClick={(e) => this.props.history.goBack()}>Back</button>

@@ -70,7 +70,7 @@ class homePageForm extends React.Component {
             </div>
           </div>
           {this.props.children}
-          <div>
+          <div className="upcoming">
             <h2 className="upcoming-events-header">Upcoming Events</h2>
             <SampleEvents />
           </div>

@@ -111,6 +111,10 @@ input.rounded:focus {
   transform: scale(1.025);
 }
 
+.upcoming {
+  padding-top: 40px;
+}
+
 div.scrollmenu {
     background-color: #fafafa;
     overflow: auto;
@@ -574,6 +578,11 @@ div.line {
   font-size: 20px;
   letter-spacing: -.02em;
   font-weight: 600!important;
+  margin-bottom: 10px;
+}
+
+.text-li {
+  width: 50px;
 }
 
 
@@ -753,6 +762,7 @@ div.line {
   width: 960px;
   margin: 0 auto;
   min-height: 400px;
+  height: 600px;
   .group-info {
     display: flex;
     flex-direction: column;

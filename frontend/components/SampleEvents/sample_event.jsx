@@ -28,7 +28,7 @@ class SampleEvent extends React.Component {
                 <div key={`${event.title} - ${event.id}`}>
                   <Link to={`/events/${event.id}`}>
                   <div className="event-li" style={style}>
-                    {event.title}
+                    <p className="text-li">{event.title}</p>
                   </div>
                   </Link>
                 </div>

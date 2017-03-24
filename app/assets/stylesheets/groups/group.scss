@@ -118,10 +118,9 @@
     }
   }
   .group-description-container {
-    margin-left: 15px;
-    width: 735px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    flex: 1;
     box-sizing: content-box;
     .description {
       padding: 10px;

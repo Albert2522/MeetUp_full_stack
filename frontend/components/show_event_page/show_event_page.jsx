@@ -60,50 +60,89 @@ class ShowEventPage extends React.Component {
     this.props.event.members.forEach((member) => members_ids.push(member.id));
     if (members_ids.includes(this.props.currentUser.id)) {
       return (
-        <button onClick = {this.leaveEvent}>Leave Event</button>
+        <button className="group-header-join-btn" onClick = {this.leaveEvent}>Not Going!</button>
       );
     } else if (this.props.event.author.id === this.props.currentUser.id) {
       return null;
     } else {
       return (
-        <button onClick = {this.joinEvent}>Join Event</button>
+        <button className="group-header-join-btn" onClick = {this.joinEvent}>Going!</button>
       );
     }
   }
 
-  render() {
-    let event = this.props.event
-    if (this.props.event.id) {
+  photosComponent(event) {
+    if (event.images.length !== 0) {
       return (
-        <div id="event-page-content1">
-          <div className="left-side-bar">
-            <h3>Images:</h3>
-            <ul>
+        <div className="event-photos">
+          <h3 className="organizer">Event photos:</h3>
+          <nav>
+            <ul id="nav-ul" className="ul-event-images">
               {event.images.map((image) => (
-                <li key={`${image.url} - ${image.id}`}><img src={image.url} alt="Should be image of event"/></li>
+                <li key={`${image.url} - ${image.id}`}><img className="image1" src={image.url} alt="Should be image of event"/></li>
               ))}
             </ul>
+          </nav>
+        </div>
+      );
+    } else {
+      return null
+    }
+  }
+
+  render() {
+    let event = this.props.event;
+    console.log(event);
+    if (this.props.event.id) {
+      let data = event.data.toString();
+      let date = data.substring(0, 10);
+      let time = data.substring(11, 16);
+      data = date + ' ' + time;
+      return (
+        <div style={{backgroundColor: "#fafafa"}}>
+          <div className="group-header">
+            <div className="group-header-name-container">
+              <h1 className="group-header-name">{event.title}</h1>
+            </div>
+            <nav className="group-header-nav">
+              <ul className="group-header-nav ul">
+                <li id="li-button-back">
+                  <button className="group-header-join-btn" onClick={(e) => this.props.history.goBack()}>Back</button>
+                </li>
+                <li id="li-button-going">
+                  {this.membershipComponent()}
+                </li>
+              </ul>
+            </nav>
           </div>
-          <div className="middle-bar">
-            <div>Title - {event.title}</div>
-            <div>Description - {event.description}</div>
-            <div>Author - {event.author.email}</div>
-            <div>Location - {event.location}</div>
-          </div>
-          <div className="right-side-bar">
-            <h3>Members:</h3>
-            <ul>
-              {event.members.map((user) => (
-                <li key={`${user.email} - ${user.id}`}>{user.email}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            Images:
+          <div className="group-information-container">
+            <div className="group-info">
+              <img className="image" src={event.image_url} />
+              <h3 className="location">Location: {event.location}</h3>
+              <h3 className="founded_on">Event date: {data}</h3>
+              <p className="num-huddles">Going: {event.members.length}</p>
+              <h3 className="organizer">Organizer:</h3>
+              <div className="organizer-container">
+                <h4>{event.author.email}</h4>
+              </div>
+              {this.photosComponent(event)}
+            </div>
+            <div className="group-description-container">
+              <div className="description">{event.description}</div>
+            </div>
+            <div className="right-side-bar">
+              <h3>Going:</h3>
+              <div className="vertical-scrollbar">
+                <ul>
+                  {event.members.map((user) => (
+                    <li key={`${user.email} - ${user.id}`}>{user.email}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
 
           </div>
-          {this.membershipComponent()}
-          <button onClick={(e) => this.props.history.goBack()}>Back</button>
           {this.props.chidren}
         </div>
       );

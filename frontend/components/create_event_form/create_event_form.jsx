@@ -21,6 +21,7 @@ class CreateEventForm extends React.Component {
       image_url: "https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/event/dt000ddfxff646a/sgb5be2d848b/457187370.jpeg",
       category_ids: [],
       images: [],
+      group_id: ""
     };
     this._handleSubmit = this._handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +37,11 @@ class CreateEventForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.event.id) {
-      setTimeout(() => this.props.router.push(`/user/${currentUser.id}`), 3000);
+      if (newProps.event.group_id !== "") {
+        this.props.router.push(`/groups/${newProps.event.group_id}`)
+      } else {
+        this.props.router.push(`/events/${newProps.event.id}`);
+      }
     }
   }
 
@@ -51,6 +56,10 @@ class CreateEventForm extends React.Component {
       event.image_url =  images[0].url;
       images.forEach( (image) => event.images.push(image.id));
     }
+    if (this.props.location.query.groupId) {
+      event.group_id = this.props.location.query.groupId;
+    }
+    debugger;
     event.data = event.data.format();
     //FILL IMAGE_RELATIONSHIPS TABLES WITH EVENT ID AND GROUP ID. PROBLEM WITH CLOUDINARY ON HEROKU
     this.props.createEvent(event);
@@ -85,18 +94,6 @@ class CreateEventForm extends React.Component {
 		);
   }
 
-  createEventMessage() {
-    if (this.props.event.id) {
-      return (
-      <div style={{color: 'green'}}>
-        Event was succesfully created<br/>
-        Now you will be redirected on Home page..
-      </div>
-    );
-    } else {
-      return null;
-    }
-  }
 
   handleChange(data) {
     this.setState({ data });
@@ -106,21 +103,32 @@ class CreateEventForm extends React.Component {
     console.log('saved', this.state.data.format('llll'));
   }
 
+
+
   render() {
     return (
-      <div className="home_page">
-        <form onSubmit={this._handleSubmit}>
-          {this.createEventMessage()}
+      <div className="group-form-wrapper">
+        <form className="group-form" onSubmit={this._handleSubmit}>
           {this.renderErrors()}
-          <label>Title
+          <label className="group-form-labels">Event title:
+            <br />
             <input type="text" value={this.state.title} onChange={this.update("title")}/>
           </label><br/><br/>
-          <label>Description
-            <input type="text" value={this.state.description} onChange={this.update("description")}/>
+        <label className="group-form-labels">Location:
+            <br />
+            <input type="text" placeholder="Cities Only Please" value={this.state.location} onChange={this.update("location")}/>
+          </label><br/><br/>
+          <label className="group-form-labels">Description
+            <br />
+            <textarea value={this.state.description} onChange={this.update("description")}/>
           </label>
-          <label>
+            <br /><br />
+          <label className="group-form-labels">
             <ImageUpploadForm ref={(imageUploader) => {this.imageUploader = imageUploader;}} {...this.props}/>
           </label>
+          <br /><br />
+          Choose date and time : <i className="fa fa-calendar" aria-hidden="true"></i>
+          <br /><br />
           <div className="app">
               <div className="input">
                   <input
@@ -135,14 +143,16 @@ class CreateEventForm extends React.Component {
                 onSave={this.handleSave}
                 />
           </div>
+          <br /><br />
           <div>
             {this.props.categories.map((category) => (
-              <div key={`${category.title} - ${category.id}`}>
-                {category.title}
+              <div className="checkbox" key={`${category.title} - ${category.id}`}>
+                <span>{category.title}</span>
                 <input  type="checkbox" value={category.id} onChange={this.update("category_ids")}/>
               </div>
             ))}
           </div>
+          <br /><br />
           <label>
             <input type="submit" value="Create Event" />
           </label>

@@ -59,43 +59,106 @@ class ShowGroupPage extends React.Component {
     this.props.group.members.forEach((member) => members_ids.push(member.id));
     if (members_ids.includes(this.props.currentUser.id)) {
       return (
-        <button onClick = {this.leaveGroup}>Leave Group</button>
+        <button className="group-header-join-btn" onClick = {this.leaveGroup}>Leave Group</button>
       );
     } else if (this.props.group.author.id === this.props.currentUser.id) {
       return null;
     } else {
       return (
-        <button onClick = {this.joinGroup}>Join Group</button>
+        <button className="group-header-join-btn" onClick = {this.joinGroup}>Join Group</button>
       );
     }
   }
 
+  photosComponent(group) {
+    if (group.images.length !== 0) {
+      return (
+        <div className="event-photos">
+          <h3 className="organizer">Event photos:</h3>
+          <nav>
+            <ul id="nav-ul" className="ul-event-images">
+              {group.images.map((image) => (
+                <li key={`${image.url} - ${image.id}`}><img className="image1" src={image.url} alt="Should be image of event"/></li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      );
+    } else {
+      return null
+    }
+  }
+
   render() {
-    let group = this.props.group
+    let group = this.props.group;
+    let array = [1, 2, 3, 4, 5, 16, 7, ,8 ,9 , 9, 11, 12, 13, 14, 15, 6, 17, 18];
     if (this.props.group.id) {
       return (
-        <div className="home_page">
-          <div>Name - {group.name}</div>
-          <div>Description - {group.description}</div>
-          <div>Author - {group.author.email}</div>
-          <div>
-            Members:
-            <ul>
-              {group.members.map((user) => (
-                <li key={`${user.email} - ${user.id}`}>{user.email}</li>
-              ))}
-            </ul>
+        <div style={{backgroundColor: "#fafafa"}}>
+          <div className="group-header">
+            <div className="group-header-name-container">
+              <h1 className="group-header-name">{group.name}</h1>
+            </div>
+            <nav className="group-header-nav">
+                <div>
+                  <button className="group-header-join-btn" onClick={(e) => this.props.history.goBack()}>Back</button>
+                  <Link id="create-event-button" to={`/create_event?groupId=${this.props.group.id}`}>Create Event</Link>
+                </div>
+                <div>
+                  {this.membershipComponent()}
+                </div>
+            </nav>
           </div>
-          <div>
-            Images:
-            <ul>
-              {group.images.map((image) => (
-                <li key={`${image.url} - ${image.id}`}><img src={image.url} alt="Should be image of group"/></li>
-              ))}
-            </ul>
+          <div className="group-information-container">
+            <div className="group-info">
+              <img className="image" src={group.image_url} />
+              <h3 className="location">Location: {group.location}</h3>
+              <p className="num-huddles">Going: {group.members.length}</p>
+              <h3 className="organizer">Organizer:</h3>
+              <div className="organizer-container">
+                <h4>{group.author.email}</h4>
+              </div>
+              {this.photosComponent(group)}
+            </div>
+            <div className="group-description-container">
+              <div className="description">{group.description}</div>
+            </div>
+            <div className="right-side-bar">
+              <h3>Members:</h3>
+              <br /><br />
+              <div className="scrollbars">
+                <div className="vertical-scrollbar">
+                  <ul>
+                    {group.members.map((user) => (
+                      <li key={`${user.email} - ${user.id}`}>{user.email}</li>
+                    ))}
+                  </ul>
+                </div>
+                <h3>Events:</h3>
+                <br /><br />
+                <div className = "vertical-scrollbar">
+                    {group.events.map( event => {
+                      const style = {
+                        backgroundImage: `url(${event.image_url})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      };
+                      return (
+                        <div key={`${event.title} - ${event.id}`}>
+                          <Link to={`/events/${event.id}`}>
+                          <div className="event-li" style={style}>
+                            {event.title}
+                          </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            </div>
+
+
           </div>
-          {this.membershipComponent()}
-          <button onClick={(e) => this.props.history.goBack()}>Back</button>
           {this.props.chidren}
         </div>
       );

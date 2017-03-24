@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :events, only: [:create, :show, :destroy, :index]
     resources :images, only: [:create, :destroy]
     resources :img_rel, only: [:create, :update, :destroy]
-    resources :groups, only: [:create, :update, :destroy, :show]
+    resources :groups, only: [:create, :update, :destroy, :show, :index]
     resources :memberships, only: [:create, :destroy]
     resources :categories, only: [:show, :index]
     resources :search, only: [:index]

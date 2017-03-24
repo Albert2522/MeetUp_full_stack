@@ -39,14 +39,17 @@ class ImageUpploadForm extends React.Component {
     let keys = Object.keys(images);
     let arr = [ ];
     keys.forEach( (key) => arr.push(images[key]));
+    let style = {
+      backgroundColor: '#fafafa'
+    };
     return (
       <div>
         {arr.map( (image) => {
           let deleteImg = this.deleteImage.bind(this, image);
           return (
           <li key={image.url}>
-            <img src={image.url} alt="Should be an Image"/>
-            <button onClick={deleteImg}>Delete Image</button>
+            <img className="image1" src={image.url} alt="Should be an Image"/>
+            <button style={style} onClick={deleteImg}>Delete Image</button>
           </li>
         );})}
       </div>
@@ -68,7 +71,7 @@ class ImageUpploadForm extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.upploadImage}>
+        <button className="navbar-highlighted-button-dark" onClick={this.upploadImage}>
           Upload Image
         </button>
         {this.showUpploadedImages()}

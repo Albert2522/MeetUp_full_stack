@@ -21,6 +21,8 @@ class Group < ActiveRecord::Base
   foreign_key: :author_id,
   class_name: 'User'
 
+  has_many :events
+
   has_many :memberships
 
   has_many :members,

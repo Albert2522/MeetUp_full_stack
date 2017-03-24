@@ -18,15 +18,22 @@ class SampleEvent extends React.Component {
     if (this.props.events) {
       return (
         <div className = "scrollmenu">
-            {this.props.events.map( event => (
-              <div key={`${event.title} - ${event.id}`}>
-                <Link to={`/events/${event.id}`}>
-                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
-                  {event.title}
+            {this.props.events.map( event => {
+              const style = {
+                backgroundImage: `url(${event.image_url})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              };
+              return (
+                <div key={`${event.title} - ${event.id}`}>
+                  <Link to={`/events/${event.id}`}>
+                  <div className="event-li" style={style}>
+                    {event.title}
+                  </div>
+                  </Link>
                 </div>
-                </Link>
-              </div>
-            ))}
+              );
+            })}
         </div>
       );
     } else {

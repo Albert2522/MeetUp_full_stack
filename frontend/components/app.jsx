@@ -9,12 +9,7 @@ const App = ({ children }) => (
   <div className="app-container">
 
       <div className="navbar-container">
-        <nav className="navbar">
-          <div className="navbar-logo-container">
-            <a href="#"><img className="navbar-logo" src={window.logo} alt="Events" /></a>
-          </div>
           <AppButtons />
-        </nav>
       </div>
 
       <div className="children-container">

@@ -6,27 +6,16 @@
   margin-right: 20px;
 }
 
-#create-event {
-  position: absolute;
-  left: 0px;
-  top: 5px;
-  margin-left: 10px;
-  padding: 8px 8px;
-}
-
 
   .navbar-highlighted-button {
   box-sizing: border-box;
-
-  width: auto;
-  height: auto;
-  padding: 15px 32px;
+  margin-left: 10px;
+  padding: 8px 8px;
   text-align: center;
   text-decoration: none;
   font-size: 1.1em;
   font-family: "aktiv-grotesk", sans-serif;
   margin: 0 8px;
-  padding: 8px 16px;
   cursor: pointer;
   border-radius: 3px;
   background-color: white;
@@ -63,17 +52,14 @@ input.rounded:focus {
 	border-color: red;
 }
 
-#searchBar {
-  position: absolute;
-  left: 140px;
-  top: 8px;
-}
-
 .main-container-categories {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+
     background-color: #fafafa;
     .categories-heading {
       display: block;
@@ -85,6 +71,7 @@ input.rounded:focus {
     }
 
     .categories-container {
+      background-color: red;
       max-width: 1200px;
       padding: 20px 50px 0 50px;
       display: flex;
@@ -112,7 +99,7 @@ input.rounded:focus {
 .sample-events-elements {
 }
 
-.image {
+.image1 {
   max-height: 175px;
   max-width: 225px;
   width: 100%;
@@ -120,7 +107,7 @@ input.rounded:focus {
   transition: transform 0.2s ease;
 }
 
-.image:hover {
+.image1:hover {
   transform: scale(1.025);
 }
 
@@ -128,7 +115,6 @@ div.scrollmenu {
     background-color: #fafafa;
     overflow: auto;
     white-space: nowrap;
-    border-top: 1px solid rgba(0,0,0,.12);
     border-bottom: 1px solid rgba(0,0,0,.12);
     margin-bottom: 0;
 }
@@ -144,6 +130,54 @@ div.scrollmenu div {
 div.scrollmenu div:hover {
     background-color: rgba(0,0,0,.12);
 }
+.scrollbars {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.vertical-scrollbar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
+
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+#create-event-button {
+  box-sizing: border-box;
+  margin-left: 10px;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-family: "aktiv-grotesk", sans-serif;
+  margin: 0 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: #fafafa;
+  color: black;
+  transition: filter 0.2s ease;
+  &:hover{
+    background-color: $meetup-red;
+    color: white;
+  }
+}
+
+.create-going-navbar {
+  flex: display;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 
 $session-padding: 20px;
 $session-form-margin-top: 10px;
@@ -288,7 +322,7 @@ $session-form-margin-top: 10px;
 }
 
 #event-left {
-  position: absolute;
+
   top: 0;
   left: 0;
   width: 200px;
@@ -530,7 +564,6 @@ div.line {
 }
 
 .event-li {
-
   display: block;
   width: 175px;
   height: 200px;
@@ -543,46 +576,6 @@ div.line {
   font-weight: 600!important;
 }
 
-.navbar-container {
-  border-bottom: 1px solid $gray-border;
-  background-color: white;
-  width: 100%;
-  padding: 5px 0;
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .navbar-logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .navbar-logo {
-        height: 50px;
-        width: auto;
-        position: absolute;
-        top: 3.5%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 6px;
-      }
-    }
-    .navbar-buttons-container {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
-      .navbar-profile-img {
-        height: 25px;
-        margin: 0 0 0 10px;
-        border-radius: 50%;
-      }
-      .navbar-button {
-        @include meetup-button;
-      }
-    }
-  }
-}
 
 #logout {
   @include meetup-button;
@@ -594,13 +587,14 @@ div.line {
 }
 
 .children-container {
-  min-height: 83vh;
+  flex: 1;
+  background-color: #fafafa;
 }
 
 .footer {
-  margin-top: 20px;
   background-color: black;
   color: white;
+  height: 80px;
   .list {
     display: flex;
     padding: 20px 100px;
@@ -611,10 +605,9 @@ div.line {
   }
 }
 
-#event-page-content1 {
+.event-page-content1 {
   position: relative;
-  display: inline-block;
-  overflow: hidden;
+  display: block;
   min-height: 2971px;
   width: 960px;
   font-size: 16px;
@@ -627,24 +620,251 @@ div.line {
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga","kern";
   color: rgba(0,0,0,.87);
+}
+.left-side-bar {
+  margin: 0 0 0 200px;
+  position: absolute;
+  padding-left: .7em;
+  height: 100%;
+  width: 20%;
+  line-height: 1.45;
+  padding: 0 1em;
+  padding-bottom: 1.25em;
+  padding-top: 1em;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,.12)!important;
+  border-bottom: 1px solid rgba(0,0,0,.26)!important;
+  background-clip: padding-box;
+  margin: 0;
+}
+
+.middle-bar {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 20%;
+  line-height: 1.45;
+  padding: 0 1em;
+  padding-bottom: 1.25em;
+  padding-top: 1em;
+  margin: 0;
+  border: 1px solid rgba(0,0,0,.12)!important;
+  border-bottom: 1px solid rgba(0,0,0,.26)!important;
+  background-clip: padding-box;
+}
+
+.right-side-bar {
+  padding: 20px;
+  width: 200px;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,.12)!important;
+  border-bottom: 1px solid rgba(0,0,0,.26)!important;
+  background-clip: padding-box;
+}
+
+@import "./variables";
+@import "./button";
+
+@mixin group-info-children-pad(){
+  padding: 5px 5px 0 5px;
+}
+
+
+.group-header {
+  width: 960px;
+  margin: 10px auto;
+  border: 1px solid #bbb;
+  border-radius: 7px;
+}
+
+.group-header-name-container {
+  width: 100%;
+  height: 100px;
+  background-color: $meetup-red;
+  border-bottom: 8px solid $meetup-red-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .group-header-name {
+    color: white;
+    font-size: 40px;
+    font-weight: normal;
+  }
+}
+
+.group-header-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  ul {
+    list-style-type: none;
+    display: flex;
+    align-items: baseline;
+    li {
+      display: block;
+      padding: 5px;
+      a {
+        text-decoration: none;
+        color: #aaa;
+        padding: 7px 10px;
+      }
+      a:hover {
+        background-color: $meetup-red;
+        border-radius: 4px;
+        color: white;
+      }
+    }
+  }
+  .group-header-join-btn {
+    @include meetup-button;
+    @include red-button;
+    margin-right: auto;
+  }
+}
+
+.navbar-highlighted-button-dark {
+  width: 200px;
+  box-sizing: border-box;
+  margin-left: 10px;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-family: "aktiv-grotesk", sans-serif;
+  margin: 0 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: #fafafa;
+  color: black;
+  transition: filter 0.2s ease;
+  &:hover{
+    background-color: $meetup-red;
+    color: black;
+  }
+}
+
+.group-header-nav div {
+  display: flex;
+  flex-direction: row;
+}
+
+.group-information-container {
+  display: flex;
+  width: 960px;
+  margin: 0 auto;
+  min-height: 400px;
+  .group-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: content-box;
+    padding: 5px;
+    .image {
+      width: 200px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .founded_on {
+      font-weight: normal;
+      font-size: 12px;
+      @include group-info-children-pad;
+    }
+    .location {
+      font-weight: normal;
+      @include group-info-children-pad;
+    }
+    .num-huddles, .num-members {
+      font-size: 14px;
+      @include group-info-children-pad;
+    }
+
+    .organizer {
+      border-top: 1px solid #ccc;
+      display: block;
+      width: 190px;
+      margin: 10px 0 5px 0;
+      @include group-info-children-pad;
+    }
+    .organizer-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      @include group-info-children-pad;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+      h4 {
+        font-weight: normal;
+        padding: 0 10px;
+      }
+    }
+    .create-huddle-btn{
+      @include meetup-button;
+      @include red-button;
+    }
+  }
+}
+
+.event-photos {
+}
+
+.ul-event-images {
+  list-style-type: none;
+  align-items: baseline;
+}
+
+
+#nav-ul {
+  height:200px;
+  width:100%;
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+#image-logo {
+  height: 30px;
+  width: 50px;
+}
+
+#navbar-start {
+  justify-content: flex-start;
+}
+
+#navbar-end {
+  justify-content: flex-end;
+}
+
+.upcoming-events-header {
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  text-align: center;
+  font-weight: 600!important;
+  margin: 0px;
+  padding-left: 15px;
+  padding-bottom: 0;
+  color: rgba(0,0,0,.87);
+  font-family: "Graphik Meetup",helvetica,arial,sans-serif;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "liga","kern";
-  margin: auto;
-  .left-side-bar {
-    border: 1px solid rgba(0,0,0,.12)!important;
-    border-bottom: 1px solid rgba(0,0,0,.26)!important;
-    background-clip: padding-box;
-  }
+  background-color: #fafafa;
+}
 
-  .middle-bar {
-    border: 1px solid rgba(0,0,0,.12)!important;
-    border-bottom: 1px solid rgba(0,0,0,.26)!important;
-    background-clip: padding-box;
-  }
+.things {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
-  .right-side-bar {
-    border: 1px solid rgba(0,0,0,.12)!important;
-    border-bottom: 1px solid rgba(0,0,0,.26)!important;
-    background-clip: padding-box;
-  }
+.app-container {
+  display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

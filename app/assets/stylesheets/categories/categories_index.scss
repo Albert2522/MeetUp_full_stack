@@ -4,14 +4,6 @@
 $top-margin: 25px 0 0 0;
 $uniform-width: 70%;
 
-.main-container-categories {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $meetup-gray;
-}
-
 .categories-container {
   max-width: 1200px;
   padding: 20px 50px 0 50px;
@@ -101,14 +93,18 @@ $uniform-width: 70%;
 
 .categories-video-container {
   position: absolute;
-  bottom: 43%;
-  right: 0%;
+  top: 0;
+  height: 100%;
+  width: 100%;
   z-index: -10;
 }
 
 @media screen and (max-width: 1378px) {
   .categories-video-container {
-    bottom: 49%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    // bottom: 39%;
   }
 }
 

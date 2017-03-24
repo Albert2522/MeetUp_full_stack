@@ -52,14 +52,19 @@ class AppButtons extends React.Component {
 
   sessionLinks(){
     return(
-      <div>
+      <nav className="navbar">
+        <div className="navbar-buttons-container">
+          <button className="navbar-highlighted-button" refresh="true" onClick={this.goToCreateEvent}>Create Event</button>
           {this.searchForm()}
-          {this.createEventAndInvite()}
+        </div>
+        <div className="navbar-logo-container">
+          <a href="#"><img className="navbar-logo" src={window.logo} alt="Events" /></a>
+        </div>
         <div className="navbar-buttons-container">
           <Link to="/login" id="login" className="navbar-highlighted-button">Log in</Link>
           <Link to="/signup" className="navbar-button red-button" id="signup">Sign up</Link>
         </div>
-      </div>
+      </nav>
     );
   }
 
@@ -77,21 +82,17 @@ class AppButtons extends React.Component {
     this.props.router.push('create_event');
   }
 
-  createEventAndInvite () {
-    return (
-      <div>
-        <button id="create-event" className="navbar-buttons-container navbar-highlighted-button" refresh="true" onClick={this.goToCreateEvent}>Create Event</button>
-      </div>
-    );
-  }
+  // createEventAndInvite () {
+  //   return (
+  //
+  //   );
+  // }
 
   searchForm() {
     return (
-      <div id="searchBar">
-        <form onSubmit={this._submitSearchForm}>
-          <input className="rounded" type="text" value={this.state.search} onChange={this.update('search')} onClick={this.clearForm}/>
-        </form>
-      </div>
+          <form onSubmit={this._submitSearchForm}>
+            <input className="rounded" type="text" value={this.state.search} onChange={this.update('search')} onClick={this.clearForm}/>
+          </form>
     );
   }
 
@@ -104,14 +105,19 @@ class AppButtons extends React.Component {
 
   greetAndLogout(){
     return (
-      <div>
-        {this.createEventAndInvite()}
-        {this.searchForm()}
+      <nav className="navbar">
+        <div className="navbar-buttons-container">
+          <button className="navbar-highlighted-button" refresh="true" onClick={this.goToCreateEvent}>Create Event</button>
+          {this.searchForm()}
+        </div>
+        <div className="navbar-logo-container">
+          <a href="#"><img className="navbar-logo" src={window.logo} alt="Events" /></a>
+        </div>
         <div className="navbar-buttons-container">
           <Link to={`/user/${this.props.currentUser.id}`}><h4 className="session-form-label">{this.props.currentUser.email}</h4></Link>
           <button id="logout" onClick={this.logoutFn}>Log Out</button>
         </div>
-    </div>
+      </nav>
     );
   }
 

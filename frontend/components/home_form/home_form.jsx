@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router';
 import { fetchCategories } from '../../actions/categories_actions';
 import { fetchGroups } from '../../actions/groups_actions';
 import SampleEvents from '../SampleEvents/sample_event_container';
-import UpcomingEvents from '../upcoming_events/upcoming_events.jsx';
 import HowAppWorks from '../how_app_works/how_app_works.jsx';
 import { allCategories, allGroups } from '../../reducers/selectors';
 import Modal from 'react-bootstrap';
@@ -84,13 +83,16 @@ class homePageForm extends React.Component {
                     backgroundPosition: 'center'
                   };
                   return (
-                  <div key={`${group.name} - ${group.id}`}>
-                    <Link to={`/groups/${group.id}`}>
-                    <div className="event-li" style={style}>
-                      {group.title}
+                    <div key={`${group.title} - ${group.id}`}>
+                      <Link to={`/groups/${group.id}`}>
+                      <div className= "event-li" style={style}>
+                        <span className="text-li">
+                          {group.name}
+                        </span>
+                      </div>
+                      </Link>
                     </div>
-                    </Link>
-                  </div>);
+                  );
                 })}
             </div>
           </div>

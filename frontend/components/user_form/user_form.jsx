@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 import { updateUser, fetchUser } from '../../actions/user_editing_actions';
+import ListOfEG from '../ListOfEG'
 import { getCategories } from '../../actions/categories_actions';
 import React from 'react';
 
@@ -32,52 +33,42 @@ class userPage extends React.Component {
 
 
   render() {
-    if (this.props.user.groups_created) {
+    console.log(this.props.user);
+    if (this.props.user.id) {
       return (
+        <div className="user-form">
         <div>
+          <div id="container">
+            <div id="link" >Welcome</div>
+            <div id="menu">
+              <div className="front face">
+                <p>WE'RE OPEN!</p>
+              </div>
+            </div>
+            </div>
+          </div>
           <h1>Hi {this.props.user.email}!</h1>
-          <Link to={`/user/${this.props.currentUser.id}/change_password`}>Change password</Link>
-          <div> Joined groups: <br />
+          <div>
+            <Link className="push_button red" to={`/user/${this.props.currentUser.id}/change_password`}>Change password</Link>
+          </div>
+
+          <div> Joined Groups:
+            <ListOfEG data={this.props.user.groups} type={"groups"} />
           </div>
           <div>
             Joined Events:
-          </div>
-          <div className= "scrollmenu">
-            {this.props.user.events.map((event) => (
-              <div key={`${event.title} - ${event.id}`}>
-                <Link to={`/events/${event.id}`}>
-                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
-                  {event.title}
-                </div>
-                </Link>
-              </div>
-            ))}
+            <ListOfEG data={this.props.user.events} type={"events"} />
           </div>
           <div>
             Created Groups:
-            {this.props.user.groups_created.map((group) => (
-              <li key={`${group.name} - ${group.id}`}><Link to={`/groups/${group.id}`} >
-                {group.name}<br />
-            <img src={group.image_url} alt="Image for group" />
-            </Link>
-              </li>
-            ))}<br />
-            <Link to={`/user/${this.props.currentUser.id}/create_group`}>Create Group</Link>
+            <ListOfEG data={this.props.user.groups_created} type={"groups"} />
           </div>
           <div> Created Events:
+            <ListOfEG data={this.props.user.events_created} type={"events"} />
           </div>
-          <div className="scrollmenu">
-            {this.props.user.events_created.map((event) => (
-              <div key={`${event.title} - ${event.id}`}>
-                <Link to={`/events/${event.id}`}>
-                <div className="event-li" style={{backgroundImage: `url(${event.image_url})`}}>
-                  {event.title}
-                </div>
-                </Link>
-              </div>
-            ))}
+          <div>
+            <Link className="push_button blue" to={`/user/${this.props.currentUser.id}/create_group`}>Create Group</Link>
           </div>
-
           { this.props.children }
         </div>
       );

@@ -569,9 +569,11 @@ div.line {
 
 .event-li {
   display: block;
+  position: relative;
   width: 175px;
   height: 200px;
   padding: 16px;
+  word-wrap: break-word;
   text-decoration: none;
   text-shadow: 1px 1px 0 rgba(0,0,0,.26);
   line-height: 1.1;
@@ -581,8 +583,20 @@ div.line {
   margin-bottom: 10px;
 }
 
+.lists-for-userForm {
+  height: 200px;
+}
+
 .text-li {
-  width: 50px;
+  position: absolute;
+  left: 15px;
+  text-align: center;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.user-form {
+  margin-left: 20px;
 }
 
 
